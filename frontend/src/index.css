@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-cream text-ink font-body;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(183, 71, 42, 0.04) 0, transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(63, 94, 63, 0.04) 0, transparent 40%);
+    min-height: 100vh;
+  }
+}
+
+/* Subtle grain overlay for the building aesthetic */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}

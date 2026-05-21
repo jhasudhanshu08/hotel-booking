@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: hotel-booking-api
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.11.0
+      - key: ALLOWED_ORIGINS
+        value: "*"  # replace with your Netlify URL once deployed
