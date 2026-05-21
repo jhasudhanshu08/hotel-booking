@@ -13,7 +13,7 @@ if (!rawOrigins || rawOrigins === '*') {
   corsOrigin = rawOrigins.split(',').map((s) => s.trim()).filter(Boolean);
 }
 
-app.use(cors({ origin: allowedOrigins }));
+app.use(cors({ origin: corsOrigin }));
 app.use(express.json());
 
 // Health check (useful for Render's keep-alive pings).
