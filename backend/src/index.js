@@ -5,10 +5,13 @@ const roomsRouter = require('./routes/rooms');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-// In production, replace '*' with your Netlify URL for tighter CORS.
-const allowedOrigins = process.env.ALLOWED_ORIGINS
-  ? process.env.ALLOWED_ORIGINS.split(',').map((s) => s.trim())
-  : '*';
+const rawOrigins = (process.env.ALLOWED_ORIGINS || '').trim();
+let corsOrigin;
+if (!rawOrigins || rawOrigins === '*') {
+  corsOrigin = '*';
+} else {
+  corsOrigin = rawOrigins.split(',').map((s) => s.trim()).filter(Boolean);
+}
 
 app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
